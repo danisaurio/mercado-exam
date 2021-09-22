@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+}
+
+
+@media screen and (max-width: 300px) {
+  .mercado-logo{
+    margin-top: 10px
+  }
+}
+
+.mercado-logo{
+  margin: 0px 10px;
+}
+
+.searchbar{
+  padding: 10px 25px 10px 10px;
+  width: 90%;
+  max-width: 70vw;
+  border: 1px solid #f5f5f5;
+  font-size: 13px;
+  color: gray;
+}
+
+.searchbar-input{
+  display: inline;
+  width: 80%;
+  text-align: end;
+}
+.searchbar-button{
+  text-align: left;
+}
+
+button{
+  border: none;
+  padding: 8px;
+}
+
