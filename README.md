@@ -7,7 +7,7 @@ Open a terminal and follow these instructions:
 
 ```sh
 # clone the repo
-git clone //TODO
+git clone https://github.com/danisaurio/mercado-exam.git
 
 # install the dependencies of the project
 npm i
