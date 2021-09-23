@@ -34,7 +34,6 @@ function ResultCard({ item }) {
             </Card>
         </Grid>
     </Link>
-
   );
 }
 

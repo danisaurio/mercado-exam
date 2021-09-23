@@ -4,7 +4,6 @@ import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import searchIcon from "../assets/images/searchicon.png";
 
-
 function SearchBar() {
   const history = useHistory();
   const [searchText, setSearchText] = useState(null);

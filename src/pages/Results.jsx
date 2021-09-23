@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 import ResultCard from "../components/ResultCard";
 import { searchProducts } from "../services/searchService";
 
-
 function Results() {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);

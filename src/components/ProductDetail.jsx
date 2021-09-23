@@ -48,7 +48,6 @@ function ProductDetail({ item }) {
                 </CardContent>
             </Card>
         </Grid>
-
   );
 }
 
