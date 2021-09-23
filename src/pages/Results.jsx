@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ResultCard from "../components/ResultCard";
 import { searchProducts } from "../services/searchService";
 
 function Results() {
@@ -14,15 +15,14 @@ function Results() {
   useEffect(() => {
     setLoading(true);
     searchProducts(query.get("search")).then((response)=>{
-      console.log(response.data.results)
-      setResult(response.data.results);
+      setResult(response.data.items);
       setLoading(false);
     });
   }, [query.get("search")])
 
 
     return (
-      <div className="App">
+      <div className="search-results">
         {
           result.length === 0 && !loading? (
             <div>
@@ -30,10 +30,9 @@ function Results() {
             </div>
           ) : (
             result.map((el) =>{
+              console.log(el)
               return(
-                <span>
-                  {el.title}<br/>
-                </span>
+                <ResultCard item={el}/>
               )
             })
           )
