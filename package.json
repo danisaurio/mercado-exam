@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "server": "node server/index.js",
-    "test": "react-scripts test"
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +40,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.2.1",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.6"
   }
 }

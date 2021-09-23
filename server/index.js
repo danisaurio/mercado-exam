@@ -4,7 +4,6 @@ const cors = require('cors');
 const { ProductDetailModel } = require('./models/productDetail.model');
 const { SearchResultModel } = require('./models/searchResult.model');
 const app = express();
-const port = 3001;
 app.use(cors({ origin: 'http://localhost:3000' }));
 
 const formUrl = (url) => {
@@ -18,34 +17,40 @@ app.get("", (req, res) => {
 });
   
 app.get('/api/items', async (req, res) => {
-    let url = formUrl(`sites/MLA/search?q=:${req.query.q}`);
-    let response = await axios.get(url);
-
-    let parsedResponse = new SearchResultModel({ ...response.data });
-    res.send(parsedResponse);
-    return;
+    try{
+        let url = formUrl(`sites/MLA/search?q=${req.query.q}`);
+        let response = await axios.get(url);
+    
+        let parsedResponse = new SearchResultModel({ ...response.data });
+        res.send(parsedResponse);
+        return;
+    }
+    catch(err){
+        return err.response?.status ? res.status(err.response.status).send(err.response.data) : res.status(500).send("Unknown error")
+    }
 })
 
 app.get('/api/items/:id', async (req, res) => {
-    let urlItemInformation = formUrl(`items/${req.params.id}`); //MLC584783942
-    let itemInformation  = await axios.get(urlItemInformation);
+    try{
+        let urlItemInformation = formUrl(`items/${req.params.id}`); //MLC584783942
+        let itemInformation  = await axios.get(urlItemInformation);
 
-    let urlItemDescription = formUrl(`items/${req.params.id}/description`);
-    let itemDescription  = await axios.get(urlItemDescription);
+        let urlItemDescription = formUrl(`items/${req.params.id}/description`);
+        let itemDescription  = await axios.get(urlItemDescription);
 
-    let parsedResponse = new ProductDetailModel({...itemInformation.data, ...itemDescription.data})
-    res.send(parsedResponse);
-    return;
+        let parsedResponse = new ProductDetailModel({...itemInformation.data, ...itemDescription.data})
+        res.send(parsedResponse);
+        return;
+    }
+    catch(err){
+        return err.response?.status ? res.status(err.response.status).send(err.response.data) : res.status(500).send("Unknown error")
+    }
 })
 
 // Catch 404
 app.use(function(req, res) {
     res.status(404);
     res.type('txt').send('Not found');
-})
-
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`)
 })
 
 module.exports = app;

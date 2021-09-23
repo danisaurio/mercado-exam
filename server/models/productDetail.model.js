@@ -15,7 +15,7 @@ class ProductDetailModel {
             },
             picture: thumbnail,
             condition: condition,
-            free_shipping: shipping.free_shipping,
+            free_shipping: shipping.free_shipping || false,
             sold_quantity: sold_quantity,
             description: plain_text
         }
