@@ -8,16 +8,15 @@ import { getProductInformation } from '../services/searchService';
 function Details() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
-  const location = useLocation()
+  let productId = useLocation().pathname.replace('/items/','')
   
   useEffect(() => {
-      let productId = location.pathname.replace('/items/','')
       setLoading(true);
       getProductInformation(productId).then((response)=>{
           setItem(response.data.item);
           setLoading(false);
       });
-  }, [])
+  }, [productId])
   return (
     <span>
       {

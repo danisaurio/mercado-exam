@@ -23,7 +23,7 @@
     "start": "react-scripts start",
     "server": "node server/server.js",
     "test": "react-scripts test",
-    "test-back": "jest server/tests/index.test.js"
+    "test-back": "jest server/tests/"
   },
   "eslintConfig": {
     "extends": [

@@ -38,7 +38,15 @@ app.get('/api/items/:id', async (req, res) => {
         let urlItemDescription = formUrl(`items/${req.params.id}/description`);
         let itemDescription  = await axios.get(urlItemDescription);
 
-        let parsedResponse = new ProductDetailModel({...itemInformation.data, ...itemDescription.data})
+        // API request necessary in order to get the category name
+        let urlCategory = formUrl(`categories/${itemInformation.data.category_id}`);
+        let category  = await axios.get(urlCategory);
+
+        let parsedResponse = new ProductDetailModel({
+            ...itemInformation.data, 
+            ...itemDescription.data, 
+            category_name: category.data.name 
+        })
         res.send(parsedResponse);
         return;
     }

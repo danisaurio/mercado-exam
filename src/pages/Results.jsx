@@ -11,15 +11,19 @@ function Results() {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
-  let query = useQuery();
+  let query = useQuery().get("search");
   
   useEffect(() => {
     setLoading(true);
-    searchProducts(query.get("search")).then((response)=>{
-      setResult(response.data.items);
+    searchProducts(query).then((response)=>{
+      let trimResult = response.data.items
+      if(trimResult.length > 4){
+        trimResult = response.data.items.slice(0,4)
+      }
+      setResult(trimResult);
       setLoading(false);
     });
-  }, [query.get("search")])
+  }, [query])
 
 
     return (

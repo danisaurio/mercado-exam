@@ -4,7 +4,6 @@ function ProductDetail({ item }) {
     const handleClick = () =>{
         window.alert('Comprado!')
     }
-    console.log(item)
     return (
         <Grid container justifyContent="center" alignItems="center" >
             <Card className="product-detail-card" variant="outlined">
@@ -13,7 +12,7 @@ function ProductDetail({ item }) {
                         <Grid item md={6} className="product-detail-description">
                             <img src={item.picture} alt="" className="product-detail-image"/>
                             <Grid item md={12} textAlign="left" alignSelf="center" >
-                                <Typography variant="h5" variantMapping="h2"  color="text.secondary" className="product-detail-description-title">
+                                <Typography variant="h5" variantMapping={{h5:"h2"}}  color="text.secondary" className="product-detail-description-title">
                                     Descripcion del producto
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary" className="product-detail-description-text">
@@ -35,10 +34,10 @@ function ProductDetail({ item }) {
                                 ` ${item.sold_quantity} vendidos`
                             }
                             </Typography>
-                            <Typography variant="h5" variantMapping="h1"  color="text.secondary">
+                            <Typography variant="h5" variantMapping={{h5:"h1"}}  color="text.secondary">
                                 {item.title}
                             </Typography>
-                            <Typography variant="h5" variantMapping="h1"  color="text.secondary">
+                            <Typography variant="h5" variantMapping={{h5:"h1"}}  color="text.secondary">
                                 $ {item.price?.amount} {item.price?.currency}
                             </Typography>
                             <Button variant="contained" onClick={handleClick} className="product-detail-button">

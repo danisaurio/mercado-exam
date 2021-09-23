@@ -1,10 +1,12 @@
+const { parseAndSortCategories } = require("../utils/categoriesService")
+
 class SearchResultModel {
     constructor (response){
         this.author = {
             name: "Daniela",
             lastname: "Vidal"
         },
-        this.categories = response.available_filters.map((filter) => filter.name)
+        this.categories = parseAndSortCategories(response.available_filters.filter((filter) => filter.id === "category"));
         this.items = response.results.map((res) => new ItemModel(res))
     }
 }
