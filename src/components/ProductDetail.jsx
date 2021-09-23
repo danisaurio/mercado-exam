@@ -4,6 +4,7 @@ function ProductDetail({ item }) {
     const handleClick = () =>{
         window.alert('Comprado!')
     }
+    console.log(item)
     return (
         <Grid container justifyContent="center" alignItems="center" >
             <Card className="product-detail-card" variant="outlined">
@@ -38,7 +39,7 @@ function ProductDetail({ item }) {
                                 {item.title}
                             </Typography>
                             <Typography variant="h5" variantMapping="h1"  color="text.secondary">
-                                $ {item.price.amount} {item.price.currency}
+                                $ {item.price?.amount} {item.price?.currency}
                             </Typography>
                             <Button variant="contained" onClick={handleClick} className="product-detail-button">
                                 Comprar

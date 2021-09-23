@@ -25,4 +25,4 @@ const getProductInformation = async (productId) => {
     return response;
 };
 
-export { searchProducts, getProductInformation }
+export { searchProducts, getProductInformation, getRequest }
