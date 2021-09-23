@@ -2,7 +2,7 @@ import '../assets/styles/App.css';
 
 function Homepage() {
   return (
-    <div className="App">
+    <div>
       Bienvenido!
     </div>
   );

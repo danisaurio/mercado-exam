@@ -21,9 +21,7 @@ function Details() {
     <span>
       {
         item !== null && !loading ? (
-          <div className="App">
-            <ProductDetail item={item}/>
-          </div>
+          <ProductDetail item={item}/>
         ) : (
           <span>Cargando...</span>
         )

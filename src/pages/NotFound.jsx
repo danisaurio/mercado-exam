@@ -1,6 +1,6 @@
 function NotFound() {
     return (
-      <div className="App">
+      <div>
         Lo sentimos, no encontamos la página que buscas :(
       </div>
     );
