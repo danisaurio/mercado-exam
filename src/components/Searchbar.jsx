@@ -19,7 +19,7 @@ function SearchBar() {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item md={1} textAlign="right">
-        <Link to='/'>
+        <Link to='/' aria-label="Volver a la página principal">
           <img src={logo} className="mercado-logo" alt=""/>
         </Link>
       </Grid>

@@ -1,8 +1,10 @@
+import '../assets/styles/SearchResult.css';
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ResultCard from "../components/ResultCard";
 import { searchProducts } from "../services/searchService";
+
 
 function Results() {
   const [result, setResult] = useState([]);
@@ -29,10 +31,9 @@ function Results() {
               Lo sentimos, no encontramos resultados asociados a tu búsqueda
             </div>
           ) : (
-            result.map((el) =>{
-              console.log(el)
+            result.map((el, i) =>{
               return(
-                <ResultCard item={el}/>
+                <ResultCard item={el} key={i}/>
               )
             })
           )

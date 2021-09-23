@@ -20,4 +20,9 @@ const searchProducts = async (query) => {
     return response;
 };
 
-export { searchProducts }
+const getProductInformation = async (productId) => {
+    let response = await getRequest(`items/${productId}`);
+    return response;
+};
+
+export { searchProducts, getProductInformation }

@@ -13,14 +13,14 @@ function ResultCard({ item }) {
                             <img src={item.picture} alt="" className="search-result-image"/>
                         </Grid>
                         <Grid item md={8}>
-                            <Typography variant="h4" color="text.secondary">
+                            <Typography variant="h4" variantMapping="h2" color="text.secondary">
                                 $ {item.price.amount} {item.price.currency} 
                                 { item.free_shipping ? (
                                     <img src={freeShippingIcon} alt="Envío gratis" className="free-shipping-icon"/>
                                     ) : null
                                 }
                             </Typography>
-                            <Typography variant="body2" component="div">
+                            <Typography variant="body2" variantMapping="h1" component="div">
                                 {item.title}
                             </Typography>
                         </Grid>
