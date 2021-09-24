@@ -6,7 +6,7 @@ class SearchResultModel {
             name: "Daniela",
             lastname: "Vidal"
         },
-        this.categories = parseAndSortCategories(response.available_filters.filter((filter) => filter.id === "category"));
+        this.categories = parseAndSortCategories(response);
         this.items = response.results.map((res) => new ItemModel(res))
     }
 }
