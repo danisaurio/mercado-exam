@@ -10,7 +10,7 @@ function SearchBar() {
 
   const onSubmit = async (e) =>{
     e.preventDefault();
-    if(searchText !== null) {
+    if(searchText) {
       history.push(`/items?search=${searchText}`)
     }
   }
@@ -38,7 +38,7 @@ function SearchBar() {
                 />
               </Grid>
               <Grid item md={1} className="searchbar-button">
-                <button type="submit" aria-label="buscar" alt="">
+                <button type="submit" aria-label="buscar">
                   <img src={searchIcon} alt=""/>
                 </button>
               </Grid>

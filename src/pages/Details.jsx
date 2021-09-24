@@ -10,6 +10,7 @@ function Details() {
   const [item, setItem] = useState(null);
   const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   let productId = useLocation().pathname.replace('/items/','')
   
   useEffect(() => {
@@ -18,6 +19,8 @@ function Details() {
           setItem(response.data.item);
           setCategory(response.data.item.category_name)
           setLoading(false);
+      }).catch(()=>{
+        setError(true);
       });
   }, [productId])
   return (
@@ -31,6 +34,11 @@ function Details() {
         ) : (
           <span>Cargando...</span>
         )
+      }
+      {
+        error ? (
+          <span>Lo sentimos! ha ocurrido un error :(</span>
+        ) : null
       }
     </span>
   );

@@ -1,6 +1,6 @@
 # Dependencies
 
-- node
+- node >= 16.6.2
 
 # Quick start
 Open a terminal and follow these instructions:

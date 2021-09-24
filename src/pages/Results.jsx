@@ -8,6 +8,7 @@ import BreadcrumbsML from '../components/BreadcrumbsML';
 
 function Results() {
   const [result, setResult] = useState([]);
+  const [error, setError] = useState(false);
   const [mainCategory, setMainCategory] = useState('');
   const [loading, setLoading] = useState(false);
   function useQuery() {
@@ -26,6 +27,8 @@ function Results() {
       }
       setResult(trimResult);
       setLoading(false);
+    }).catch(()=>{
+      setError(true);
     });
   }, [query])
 
@@ -33,12 +36,12 @@ function Results() {
     return (
       <div className="search-results">
         {
-          !loading ? (
+          !loading && !error ? (
             <BreadcrumbsML results={mainCategory} details={false} />
           ) : null
         }
         {
-          result.length === 0 && !loading? (
+          result.length === 0 && !loading && !error ? (
             <div>
               Lo sentimos, no encontramos resultados asociados a tu búsqueda
             </div>
@@ -51,8 +54,13 @@ function Results() {
           )
         }
         {
-          loading ? (
+          loading && !error ? (
             <span>Cargando...</span>
+          ) : null
+        }
+        {
+          error ? (
+            <span>Lo sentimos! ha ocurrido un error :(</span>
           ) : null
         }
       </div>

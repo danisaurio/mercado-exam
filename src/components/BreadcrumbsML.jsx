@@ -5,13 +5,6 @@ import Stack from '@mui/material/Stack';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const sanitizeLink = (link) =>{
-  let sanitizedlink = link.toLowerCase();
-  sanitizedlink = sanitizedlink.replaceAll(" ", "");
-  sanitizedlink = sanitizedlink.replaceAll("ñ", "n");
-  return sanitizedlink
-}
-
 export default function BreadcrumbsML({ results, details }) {
   let [storage] = useState(localStorage.getItem("mainCategory"));
   let [mainCategory, setMainCategory] = useState("");
@@ -28,14 +21,14 @@ export default function BreadcrumbsML({ results, details }) {
         </Link>
         {
           mainCategory !== "" ? (
-            <Link underline="hover" component="a" color="inherit" href={`/items?search=${sanitizeLink(mainCategory)}`}>
+            <Link underline="hover" component="a" color="inherit" href={`/items?search=${encodeURIComponent(mainCategory)}`}>
               {mainCategory}
             </Link>
           ) : null
         }
         {
           details ? (
-            <Link underline="hover" color="inherit" href={`/items?search=${sanitizeLink(details)}`}>
+            <Link underline="hover" color="inherit" href={`/items?search=${encodeURIComponent(details)}`}>
               {details}
             </Link>
           ) : null

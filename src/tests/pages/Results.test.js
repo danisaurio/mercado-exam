@@ -11,9 +11,13 @@ jest.mock("react-router-dom", () => ({
 }));
 
 test('renders', () => {
+  jest.spyOn(searchService, 'searchProducts').mockImplementation(()=>Promise.resolve({ data: {items: [1,2,3]}}))
   let wrapper = render(<Results />);
-  jest.spyOn(searchService, 'searchProducts').mockImplementation(()=>{
-    Promise.resolve({ data: {items: [1,2,3]}})
-  })
   expect(wrapper.findByText("Cargando...")).not.toBeNull()
+});
+
+test('renders if error', () => {
+  jest.spyOn(searchService, 'searchProducts').mockImplementation(()=>Promise.reject('Error'))
+  let wrapper = render(<Results />);
+  expect(wrapper.findByText("Lo sentimos! ha ocurrido un error :(")).not.toBeNull()
 });

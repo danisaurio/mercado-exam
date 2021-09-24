@@ -9,10 +9,10 @@ function ResultCard({ item }) {
             <Card className="search-result-card" variant="outlined">
                 <CardContent>
                     <Grid container direction="row">
-                        <Grid item md={2}>
+                        <Grid item md={2} xs={2} xl={2}>
                             <img src={item.picture} alt="" className="search-result-image"/>
                         </Grid>
-                        <Grid item md={8}>
+                        <Grid item md={8} xs={8} xl={8} className="search-result-image-container">
                             <Typography variant="h4" variantMapping={{h4:"h2"}} color="text.secondary">
                                 $ {item.price.amount} {item.price.currency} 
                                 { item.free_shipping ? (
@@ -24,8 +24,8 @@ function ResultCard({ item }) {
                                 {item.title}
                             </Typography>
                         </Grid>
-                        <Grid item md={2} textAlign="center" alignSelf="center">
-                            <Typography variant="body2" color="text.secondary">
+                        <Grid item md={2} xs={12} xl={2} textAlign="center" alignSelf="center">
+                            <Typography variant="body2" color="text.secondary" className="detalles-text">
                                 Detalles
                             </Typography>
                         </Grid>
